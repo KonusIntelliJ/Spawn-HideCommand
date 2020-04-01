@@ -11,7 +11,6 @@ public class Main extends JavaPlugin {
         getCommand("spawn").setExecutor(new Spawn(this));
         getCommand("setspawn").setExecutor(new SetSpawn(this));
         Bukkit.getPluginManager().registerEvents(new SpawnListener(this), this);
-        getConfig().options().copyDefaults();
     }
 
     public void onDisable(){
