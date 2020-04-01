@@ -1,0 +1,13 @@
+name: Spawn
+main: ru.konus.spawn.Main
+version: 1.0.1
+author: Konus
+description: Плагин для установки и телепорта спавна.
+commands:
+  spawn:
+    description: Телепортироваться на спавн.
+    aliases: [спавн]
+    usage: /spawn
+  setspawn:
+    description: Установить спавн.
+    usage: /setspawn
