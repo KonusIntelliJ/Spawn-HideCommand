@@ -1,5 +1,5 @@
 name: Spawn
-main: ru.konus.spawn.Main
+main: ru.konus.main.Main
 version: 1.0.1
 author: Konus
 description: Плагин для установки и телепорта спавна.
@@ -11,3 +11,7 @@ commands:
   setspawn:
     description: Установить спавн.
     usage: /setspawn
+  hide:
+    description: Скрыть/Расскрыть игроков.
+    aliases: [скрыть]
+    usage: /hide
