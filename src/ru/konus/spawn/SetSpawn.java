@@ -46,12 +46,13 @@ public class SetSpawn implements CommandExecutor {
         double z = location.getZ();
 	float yaw = location.getYaw();
 	float pitch = location.getPitch();
-
-        config.set("spawn.x", x);
-        config.set("spawn.y", y);
-        config.set("spawn.z", z);
-        config.set("spawn.yaw", yaw);
-        config.set("spawn.pitch", pitch);
+        String spawnStr = "spawn";
+	    
+        config.set(spawnStr + ".x", x);
+        config.set(spawnStr + ".y", y);
+        config.set(spawnStr + ".z", z);
+        config.set(spawnStr + ".yaw", yaw);
+        config.set(spawnStr + ".pitch", pitch);
         plugin.saveConfig();
 
         player.sendMessage("§7Координаты: §eX: §b" + (int) x +
