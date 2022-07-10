@@ -8,8 +8,6 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import ru.konus.main.Main;
 
-import java.io.File;
-
 public class Spawn implements CommandExecutor {
 
     private Main plugin;
