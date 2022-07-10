@@ -40,12 +40,12 @@ public class SetSpawn implements CommandExecutor {
         }
 
         Location location = player.getLocation();	
-		FileConfiguration config = plugin.getConfig();
+	FileConfiguration config = plugin.getConfig();
         double x = location.getX();
         double y = location.getY();
         double z = location.getZ();
-		float yaw = location.getYaw();
-		float pitch = location.getPitch();
+	float yaw = location.getYaw();
+	float pitch = location.getPitch();
 
         config.set("spawn.x", x);
         config.set("spawn.y", y);
