@@ -13,7 +13,6 @@ import java.io.File;
 public class Spawn implements CommandExecutor {
 
     private Main plugin;
-    File configFile;
 
     public Spawn(Main plugin){
         this.plugin = plugin;
@@ -21,35 +20,25 @@ public class Spawn implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender s, Command cmd, String label, String[] args) {
-        if(!cmd.getName().equalsIgnoreCase("spawn")) return true;
-
-        if(!(s instanceof Player)){
+        if (!(s instanceof Player)){
             s.sendMessage("§cOnly Players!");
             return true;
         }
 
         Player player = (Player)s;
 
-        if(args.length != 0){
+        if (args.length != 0){
             player.sendTitle("§cПредупреждение", "§7Используйте §c/spawn", 8, 10, 8);
             return true;
         }
 
-        configFile = new File(plugin.getDataFolder(), "config.yml");
-        if(!configFile.exists()){
-            player.sendTitle("§cСпавн", "§7Спавн не существует", 8, 15, 8);
-            return true;
+        Location spawnLocation = plugin.getSpawnLocation();
+        if (spawn == null) {
+            player.sendTitle("§cПредупреждение", "§7Спавн не установлен", 8, 10, 8);
+            return;
         }
-
-        double x = plugin.getConfig().getDouble("spawn.x");
-        double y = plugin.getConfig().getDouble("spawn.y");
-        double z = plugin.getConfig().getDouble("spawn.z");
-        float yaw = (float) plugin.getConfig().getDouble("spawn.yaw");
-        float pitch = (float) plugin.getConfig().getDouble("spawn.pitch");
-
-        Location location = new Location(Bukkit.getWorld("world"), x, y, z, yaw, pitch);
-
-        player.teleport(location);
+       
+        player.teleport(spawnLocation);
         player.sendTitle("§aТелепорт", "§7Вы телепортированы на спавн", 8, 15, 8);
         return true;
     }
