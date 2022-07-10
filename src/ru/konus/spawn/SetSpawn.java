@@ -16,8 +16,6 @@ public class SetSpawn implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender s, Command cmd, String label, String[] args) {
-        if(!cmd.getName().equalsIgnoreCase("setspawn")) return true;
-
         if(!(s instanceof Player)){
             s.sendMessage("§cOnly players!");
             return true;
@@ -41,18 +39,26 @@ public class SetSpawn implements CommandExecutor {
             return true;
         }
 
-        plugin.getConfig().set("spawn.x", player.getLocation().getX());
-        plugin.getConfig().set("spawn.y", player.getLocation().getY());
-        plugin.getConfig().set("spawn.z", player.getLocation().getZ());
-        plugin.getConfig().set("spawn.yaw", player.getLocation().getYaw());
-        plugin.getConfig().set("spawn.pitch", player.getLocation().getPitch());
+        Location location = player.getLocation();	
+		FileConfiguration config = plugin.getConfig();
+        double x = location.getX();
+        double y = location.getY();
+        double z = location.getZ();
+		float yaw = location.getYaw();
+		float pitch = location.getPitch();
+
+        config.set("spawn.x", x);
+        config.set("spawn.y", y);
+        config.set("spawn.z", z);
+        config.set("spawn.yaw", yaw);
+        config.set("spawn.pitch", pitch);
         plugin.saveConfig();
 
-        player.sendMessage("§7Координаты: §eX: §b" + (int) player.getLocation().getX() +
-                "§7, §eY: §b" + (int) player.getLocation().getY() +
-                "§7, §eZ: §b" + (int) player.getLocation().getZ() +
-                "§7, §eYaw: §b" + (int) player.getLocation().getYaw() +
-                "§7, §ePitch: §b" + (int) player.getLocation().getPitch());
+        player.sendMessage("§7Координаты: §eX: §b" + (int) x +
+                "§7, §eY: §b" + (int) y +
+                "§7, §eZ: §b" + (int) z) +
+                "§7, §eYaw: §b" + (int) yaw +
+                "§7, §ePitch: §b" + (int) pitch);
         player.sendTitle("§aСпавн", "§7Вы установили спавн", 8, 15, 8);
 
         return true;
