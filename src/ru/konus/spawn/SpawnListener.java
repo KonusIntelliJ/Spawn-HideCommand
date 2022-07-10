@@ -9,12 +9,9 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerRespawnEvent;
 import ru.konus.main.Main;
 
-import java.io.File;
-
 public class SpawnListener implements Listener {
 
     private Main plugin;
-    File configFile;
 
     public SpawnListener(Main plugin){
         this.plugin = plugin;
