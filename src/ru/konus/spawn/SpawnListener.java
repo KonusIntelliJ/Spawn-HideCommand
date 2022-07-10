@@ -23,31 +23,18 @@ public class SpawnListener implements Listener {
     @EventHandler
     public void onJoin(PlayerJoinEvent event){
         Player player = event.getPlayer();
-
-        configFile = new File(plugin.getDataFolder(), "config.yml");
-        if(!configFile.exists()) return;
-
-        double x = plugin.getConfig().getDouble("spawn.x");
-        double y = plugin.getConfig().getDouble("spawn.y");
-        double z = plugin.getConfig().getDouble("spawn.z");
-        float yaw = (float) plugin.getConfig().getDouble("spawn.yaw");
-        float pitch = (float) plugin.getConfig().getDouble("spawn.pitch");
-        Location location = new Location(Bukkit.getWorld("world"), x, y, z, yaw, pitch);
-        player.teleport(location);
+        Location spawnLocation = plugin.getSpawnLocation();
+        if (spawnLocation == null) 
+            return;
+        player.teleport(spawnLocation);
     }
 
     @EventHandler
     public void onRespawn(PlayerRespawnEvent event){
-        configFile = new File(plugin.getDataFolder(), "config.yml");
-        if(!configFile.exists()) return;
-
-        double x = plugin.getConfig().getDouble("spawn.x");
-        double y = plugin.getConfig().getDouble("spawn.y");
-        double z = plugin.getConfig().getDouble("spawn.z");
-        float yaw = (float) plugin.getConfig().getDouble("spawn.yaw");
-        float pitch = (float) plugin.getConfig().getDouble("spawn.pitch");
-        Location location = new Location(Bukkit.getWorld("world"), x, y, z, yaw, pitch);
-        event.setRespawnLocation(location);
+        Location spawnLocation = plugin.getSpawnLocation();
+        if (spawnLocation == null) 
+            return;
+        event.setRespawnLocation(spawnLocation);
     }
 
 }
