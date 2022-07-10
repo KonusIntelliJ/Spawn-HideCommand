@@ -30,6 +30,7 @@ public class SetSpawn implements CommandExecutor {
 
         if(args.length == 1 && args[0].equalsIgnoreCase("reload")){
             plugin.reloadConfig();
+	    plugin.loadSpawnLocation();
             player.sendTitle("§aПлагин", "§7Был перезагружен", 8, 10, 8);
             return true;
         }
