@@ -17,7 +17,7 @@ import java.util.List;
 
 public class Hide implements CommandExecutor, Listener {
 
-    public static List<String> toggle = new ArrayList<>();
+    private final List<String> toggle = new ArrayList<>();
     private Main plugin;
 
     public Hide(Main plugin){
