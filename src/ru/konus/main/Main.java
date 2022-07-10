@@ -7,6 +7,8 @@ import ru.konus.spawn.SetSpawn;
 import ru.konus.spawn.Spawn;
 import ru.konus.spawn.SpawnListener;
 
+import java.io.File;
+
 public class Main extends JavaPlugin {
     
     private Location spawn;
